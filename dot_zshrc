@@ -12,10 +12,8 @@ SAVEHIST=5000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
-# Load aliases from .aliasrc
-if [ -f "$HOME/.aliasrc" ]; then
-    source "$HOME/.aliasrc"
-fi
+# Aliases
+source .config/aliasrc
 
 # Load starship
 eval "$(starship init zsh)"
