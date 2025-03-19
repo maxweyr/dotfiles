@@ -1,4 +1,4 @@
-# STARSHIP CONFIG
+# ~/.config/starship.toml
 
 "$schema" = 'https://starship.rs/config-schema.json'
 add_newline = false
@@ -10,6 +10,7 @@ $package\
 $fill\
 $git_branch\
 $git_commit\
+$git_time\
 $git_metrics\
 $git_status\
 $cmd_duration\
@@ -55,12 +56,17 @@ symbol = '󰘬 '
 
 [git_commit]
 commit_hash_length = 7
-format = '[\($hash$tag\)]($style) [$timestamp]($style) '
+format = '[\($hash$tag\)]($style) '
 style = "yellow"
 only_detached = false
 tag_disabled = false
-tag_symbol = "  "
-timestamp_format = "relative"  # Shows relative time since commit
+tag_symbol = " "
+
+[custom.git_time]
+command = "git log -1 --format='%cr'"
+when = "git rev-parse --git-dir 2> /dev/null"
+format = "[$output]($style) "
+style = "yellow"
 
 [git_status]
 ahead = '[󱓊 ${count}](blue) '
